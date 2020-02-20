@@ -1,16 +1,19 @@
-library(shiny)
+shinyServer(function(input, output, session){
+  
+  
+  
+  output$first <- renderText("first")
+    
+  
+  data <- read.csv("a.csv")
+  
+  output$boxplot <- renderPlot({
+    boxplot(data)
+  })
+  
 
-server <- function(input, output) {
-    output$PREPROCESSING <- renderMenu({
-        menuItem("PREPROCESSING", icon = icon("calendar"))
-    })
-    output$SCATTER <- renderMenu({
-        menuItem("SCATTER", icon = icon("calendar"))
-    })
-    output$DISTRIBUTION <- renderMenu({
-        menuItem("DISTRIBUTION", icon = icon("calendar"))
-    })
-    output$LIVEANALYSIS <- renderMenu({
-        menuItem("LIVEANALYSIS", icon = icon("calendar"))
-    })
-}
+  
+
+  output$third <- renderText("Third")
+  output$fourth <- renderText("Fourth")
+})
